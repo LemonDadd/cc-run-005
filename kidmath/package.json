@@ -1,0 +1,35 @@
+{
+  "name": "kidmath",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "KidMath - 儿童数学启蒙纯离线桌面游戏 (Tauri 2 + React 18)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "scripts:gen-assets": "node scripts/generate-assets.mjs",
+    "icons": "tauri icon app-icon.png",
+    "test:logic": "esbuild scripts/check-generators.ts scripts/check-db.ts --bundle --platform=node --format=esm --outdir=node_modules/.tmp/test && node node_modules/.tmp/test/check-generators.js && node node_modules/.tmp/test/check-db.js",
+    "test": "npm run build && npm run test:logic"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "~5.6.3",
+    "vite": "^5.4.11"
+  }
+}

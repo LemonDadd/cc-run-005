@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Rust / Tauri
+src-tauri/target
+src-tauri/gen
+**/*.rs.bk
+
+# app-icon.png 随源码分发（构建脚本会用到）；public/sounds 为生成物可再生成
+
+# 本地数据库（运行时生成，切勿提交）
+*.db
+*.db-shm
+*.db-wal

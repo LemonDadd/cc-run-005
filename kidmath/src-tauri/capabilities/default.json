@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "KidMath 默认能力集：仅允许调用本应用自定义 command；不含 http、fs、shell、notification 等网络/系统能力，保证纯离线。",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

@@ -1,0 +1,32 @@
+[package]
+name = "kidmath"
+version = "1.0.0"
+description = "KidMath 儿童数学启蒙 —— 纯离线桌面应用"
+authors = ["KidMath"]
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "kidmath_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# bundled：在 macOS/Windows 上随包编译 SQLite，不依赖系统库
+rusqlite = { version = "0.32", features = ["bundled"] }
+sha2 = "0.10"
+hex = "0.4"
+getrandom = { version = "0.2", features = ["std"] }
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

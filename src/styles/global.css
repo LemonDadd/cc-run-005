@@ -1,0 +1,573 @@
+/* KidMath 全局样式：圆润卡通、高对比、大触控目标。 */
+:root {
+  --bg: #fdf7ec;
+  --bg-2: #eaf6ff;
+  --ink: #2d2a4a;
+  --ink-soft: #6b6890;
+  --card: #ffffff;
+  --primary: #ff8a3d;
+  --primary-dark: #ef6c1a;
+  --secondary: #48c6ef;
+  --success: #34c77b;
+  --success-bg: #d9f7e8;
+  --warn: #ffb020;
+  --pink: #ff6b9d;
+  --purple: #8d6bff;
+  --shadow: 0 8px 24px rgba(45, 42, 74, 0.14);
+  --shadow-lg: 0 14px 40px rgba(45, 42, 74, 0.2);
+  --radius: 28px;
+  --radius-sm: 18px;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI",
+    system-ui, -apple-system, "Comic Sans MS", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 20px; /* 正文 ≥20px */
+  color: var(--ink);
+  background: radial-gradient(1200px 700px at 80% -10%, #fff3d6 0%, transparent 55%),
+    radial-gradient(1000px 700px at -10% 110%, #d9f2ff 0%, transparent 55%),
+    var(--bg);
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+/* ---------- 通用按钮：文字 ≥24px、高度 ≥80px、按压缩放 ---------- */
+.btn {
+  min-height: 80px;
+  padding: 0 34px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(180deg, #ff9d52, var(--primary-dark));
+  border-radius: 999px;
+  box-shadow: 0 6px 0 #d55f12, var(--shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.15s ease;
+  touch-action: manipulation;
+}
+.btn:hover {
+  filter: brightness(1.04);
+}
+.btn:active {
+  transform: scale(0.93);
+  box-shadow: 0 2px 0 #d55f12, var(--shadow);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.btn.btn-secondary {
+  background: linear-gradient(180deg, #6fd3ff, #2f9fd8);
+  box-shadow: 0 6px 0 #1f7ea9, var(--shadow);
+}
+.btn.btn-secondary:active {
+  box-shadow: 0 2px 0 #1f7ea9, var(--shadow);
+}
+.btn.btn-ghost {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 6px 0 #e3ddc9, var(--shadow);
+}
+.btn.btn-ghost:active {
+  box-shadow: 0 2px 0 #e3ddc9, var(--shadow);
+}
+.btn.btn-purple {
+  background: linear-gradient(180deg, #a48bff, #7354e8);
+  box-shadow: 0 6px 0 #5a3fc4, var(--shadow);
+}
+.btn.btn-purple:active {
+  box-shadow: 0 2px 0 #5a3fc4, var(--shadow);
+}
+.btn.btn-sm {
+  min-height: 52px;
+  padding: 0 20px;
+  font-size: 20px;
+}
+.btn.btn-block {
+  width: 100%;
+}
+
+/* ---------- 卡片与布局 ---------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.app-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: screen-in 0.26s ease both;
+}
+
+@keyframes screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+}
+.topbar .spacer {
+  flex: 1;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: var(--shadow);
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 6px 28px 28px;
+}
+
+/* ---------- 头像 ---------- */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 54px;
+  background: linear-gradient(160deg, #fff6e0, #ffe0c2);
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.06), var(--shadow);
+  position: relative;
+  flex: none;
+}
+.avatar.avatar-lg {
+  width: 150px;
+  height: 150px;
+  font-size: 88px;
+}
+.avatar.avatar-sm {
+  width: 56px;
+  height: 56px;
+  font-size: 32px;
+}
+.avatar .equip {
+  position: absolute;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+.avatar .equip-hat {
+  top: -22px;
+  font-size: 0.55em;
+}
+.avatar .equip-glasses {
+  top: 40%;
+  font-size: 0.42em;
+}
+.avatar .equip-pet {
+  bottom: -12px;
+  right: -14px;
+  font-size: 0.5em;
+}
+
+/* ---------- 答对/答错反馈 ---------- */
+.correct-glow {
+  background: var(--success-bg) !important;
+  box-shadow: 0 0 0 6px var(--success), var(--shadow-lg) !important;
+  animation: pop-good 0.3s ease;
+}
+@keyframes pop-good {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.shake {
+  animation: shake 0.42s ease;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(9px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.feedback-banner {
+  position: fixed;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  z-index: 60;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--success);
+  background: #fff;
+  padding: 18px 40px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  animation: banner 0.7s ease both;
+}
+@keyframes banner {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px) scale(0.8);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1.05);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -16px) scale(1);
+  }
+}
+
+/* ---------- 星星粒子 ---------- */
+.star-particle {
+  position: fixed;
+  font-size: 34px;
+  pointer-events: none;
+  z-index: 70;
+  animation: star-fly 0.9s ease-out forwards;
+}
+@keyframes star-fly {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1.25) rotate(220deg);
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 70;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.9;
+  }
+}
+
+/* ---------- 拖拽 ---------- */
+.draggable {
+  cursor: grab;
+  touch-action: none;
+  transition: transform 0.12s ease;
+}
+.draggable:active {
+  cursor: grabbing;
+}
+.drag-ghost {
+  position: fixed;
+  z-index: 80;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1.1) rotate(-4deg);
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.25));
+}
+.snap-back {
+  animation: snap-back 0.3s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+@keyframes snap-back {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.drop-target {
+  transition: box-shadow 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.drop-target.drop-hot {
+  background: var(--success-bg);
+  box-shadow: 0 0 0 5px var(--success), var(--shadow);
+  transform: scale(1.04);
+}
+
+/* ---------- 表单 ---------- */
+.field label {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--ink-soft);
+}
+.field input,
+.field select {
+  width: 100%;
+  min-height: 64px;
+  font-size: 24px;
+  padding: 0 20px;
+  border-radius: 18px;
+  border: 3px solid #ece6d6;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.field input:focus,
+.field select:focus {
+  border-color: var(--secondary);
+}
+
+.pin-dots {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+.pin-dots .dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e3ddc9;
+}
+.pin-dots .dot.on {
+  background: var(--primary);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 320px;
+}
+.keypad button {
+  min-height: 80px;
+  font-size: 34px;
+  font-weight: 800;
+  border-radius: 24px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 5px 0 #e3ddc9, var(--shadow);
+  transition: transform 0.1s ease;
+}
+.keypad button:active {
+  transform: scale(0.92);
+  box-shadow: 0 1px 0 #e3ddc9;
+}
+
+/* ---------- 弹窗遮罩 ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 42, 74, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  padding: 24px;
+  animation: fade-in 0.2s ease;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal {
+  width: min(680px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+  animation: modal-in 0.25s cubic-bezier(0.3, 1.3, 0.5, 1);
+}
+@keyframes modal-in {
+  from {
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- 游戏通用 ---------- */
+.option-btn {
+  min-height: 80px;
+  font-size: 28px;
+  font-weight: 800;
+  border-radius: 26px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 6px 0 #e3ddc9, var(--shadow);
+  padding: 16px 22px;
+  transition: transform 0.12s ease;
+}
+.option-btn:active {
+  transform: scale(0.94);
+}
+
+.progress-track {
+  height: 18px;
+  border-radius: 999px;
+  background: #ece6d6;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffd35a, var(--primary));
+  transition: width 0.25s ease;
+}
+
+.hearts-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e3ddc9;
+}
+.hearts-dot.done {
+  background: var(--success);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+.center {
+  display: grid;
+  place-items: center;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.grow {
+  flex: 1;
+}
+
+/* 休息动画 */
+.rest-moon {
+  font-size: 120px;
+  animation: float 2.6s ease-in-out infinite;
+}
+.zzz span {
+  display: inline-block;
+  font-size: 40px;
+  animation: zzz 2s ease-in-out infinite;
+}
+.zzz span:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.zzz span:nth-child(3) {
+  animation-delay: 0.8s;
+}
+@keyframes zzz {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+}
